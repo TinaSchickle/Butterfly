@@ -1,0 +1,14 @@
+{
+  "name": "Butterfly – Tagesplan Schilddrüse",
+  "short_name": "Butterfly",
+  "description": "Tagesplan für Säfte, Tees, Nahrungsergänzung und Rezepte bei Schilddrüsenthemen",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf3ec",
+  "theme_color": "#a78bd6",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Butterfly – Tagesplan Schilddrüse</title>
+<meta name="description" content="Tagesplan für Säfte, Tees, Nahrungsergänzung und Rezepte bei Schilddrüsenthemen">
+<meta name="theme-color" content="#a78bd6">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Butterfly">
+<style>
+  :root{
+    --purple:#a78bd6;
+    --purple-dark:#7f63b0;
+    --teal:#6fc2b4;
+    --teal-dark:#4a9e90;
+    --cream:#faf3ec;
+    --cream-2:#f3e6da;
+    --card:#ffffff;
+    --ink:#3d3546;
+    --ink-soft:#6b6275;
+    --line:#ece3f5;
+    --amber:#f0b95a;
+    --amber-bg:#fdf2df;
+    --radius:18px;
+    --shadow:0 6px 20px rgba(120,90,160,0.10);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(180deg,var(--cream) 0%, var(--cream-2) 100%);
+    color:var(--ink);
+    min-height:100vh;
+    padding-bottom:56px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+  header.hero{
+    background:linear-gradient(135deg,var(--purple) 0%, var(--teal) 100%);
+    padding:38px 18px 54px;
+    text-align:center;
+    color:#fff;
+    border-radius:0 0 32px 32px;
+    box-shadow:0 8px 24px rgba(120,90,160,0.25);
+  }
+  header.hero .emoji{font-size:44px; line-height:1; filter:drop-shadow(0 2px 6px rgba(0,0,0,.15))}
+  header.hero h1{margin:10px 0 4px; font-size:1.6rem; font-weight:700; letter-spacing:.2px}
+  header.hero p{margin:0; opacity:.92; font-size:.95rem}
+
+  .install-hint{
+    max-width:760px;margin:-28px auto 0; padding:0 18px;
+  }
+  .install-card{
+    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:14px 18px; display:flex; align-items:center; gap:12px;
+    font-size:.85rem; color:var(--ink-soft);
+  }
+  .install-card .ic{font-size:1.4rem}
+
+  section{margin-top:34px}
+  h2.section-title{
+    display:flex; align-items:center; gap:10px;
+    font-size:1.15rem; margin:0 0 16px; color:var(--purple-dark);
+  }
+  h2.section-title .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:linear-gradient(135deg,var(--purple),var(--teal));
+    flex:none;
+  }
+
+  /* Timeline */
+  .timeline{display:flex; flex-direction:column; gap:12px}
+  .tl-item{
+    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:14px 16px; display:flex; gap:14px; align-items:flex-start;
+    border-left:5px solid var(--purple);
+  }
+  .tl-item.teal{border-left-color:var(--teal)}
+  .tl-item .icon{font-size:1.5rem; line-height:1; margin-top:2px}
+  .tl-item .body{flex:1}
+  .tl-time{font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple-dark)}
+  .tl-item.teal .tl-time{color:var(--teal-dark)}
+  .tl-name{font-size:1rem; font-weight:600; margin:2px 0 2px}
+  .tl-amount{font-size:.85rem; color:var(--ink-soft)}
+
+  /* Timing table as cards */
+  .timing-grid{display:flex; flex-direction:column; gap:10px}
+  .timing-card{
+    background:var(--card); border-radius:14px; box-shadow:var(--shadow);
+    padding:13px 16px;
+  }
+  .timing-card .row1{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap}
+  .timing-card .supp{font-weight:700; color:var(--ink)}
+  .timing-card .when{
+    font-size:.72rem; font-weight:700; color:#fff; background:var(--teal);
+    padding:3px 10px; border-radius:999px; white-space:nowrap;
+  }
+  .timing-card.purple-tag .when{background:var(--purple)}
+  .timing-card .why{font-size:.85rem; color:var(--ink-soft); margin-top:6px; line-height:1.45}
+
+  /* Hinweis */
+  .notice{
+    background:var(--amber-bg); border:1px solid #f0d9a8; border-radius:var(--radius);
+    padding:16px 18px; display:flex; gap:12px; box-shadow:var(--shadow);
+  }
+  .notice .ic{font-size:1.4rem}
+  .notice p{margin:0; font-size:.88rem; line-height:1.55; color:#6b4f1e}
+  .notice strong{color:#5a3f10}
+
+  /* Recipes */
+  .recipe-grid{display:grid; grid-template-columns:1fr; gap:14px}
+  @media(min-width:600px){.recipe-grid{grid-template-columns:1fr 1fr}}
+  .recipe-card{
+    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:16px 18px;
+  }
+  .recipe-card h3{margin:0 0 10px; font-size:1rem; color:var(--purple-dark); display:flex; align-items:center; gap:8px}
+  .recipe-card ul{margin:0; padding-left:18px; font-size:.88rem; color:var(--ink); line-height:1.7}
+  .recipe-card .yield{font-size:.85rem; color:var(--ink-soft)}
+
+  footer{
+    text-align:center; margin-top:40px; padding:18px; font-size:.75rem; color:var(--ink-soft);
+  }
+
+  @media(prefers-color-scheme:dark){
+    :root{
+      --cream:#221d2b; --cream-2:#1a1621; --card:#2b2534; --ink:#f1ecf7;
+      --ink-soft:#b3a9c2; --line:#3a3346; --amber-bg:#3a3021; --shadow:0 6px 20px rgba(0,0,0,.35);
+    }
+    .notice{border-color:#5a4a25}
+    .notice p{color:#e8c98a}
+    .notice strong{color:#f2d9a3}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="emoji">🦋</div>
+  <h1>Tagesplan – Schilddrüse</h1>
+  <p>Säfte, Tees, Ergänzungen &amp; Rezepte im Tagesverlauf</p>
+</header>
+
+<div class="install-hint">
+  <div class="install-card">
+    <span class="ic">📲</span>
+    <span>Als App speichern: im Browser-Menü <strong>„Zum Startbildschirm hinzufügen“</strong> bzw. <strong>„App installieren“</strong> wählen.</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <h2 class="section-title"><span class="dot"></span>Tagesverlauf</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="icon">🌅</div>
+        <div class="body">
+          <div class="tl-time">Morgens, nüchtern</div>
+          <div class="tl-name">Reiner Staudensellerie-Saft</div>
+          <div class="tl-amount">500 ml</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">💊</div>
+        <div class="body">
+          <div class="tl-time">Morgens, direkt danach</div>
+          <div class="tl-name">Jod</div>
+          <div class="tl-amount">lt. Präparat</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🌿</div>
+        <div class="body">
+          <div class="tl-time">Morgens, vor/mit Frühstück</div>
+          <div class="tl-name">Rosenwurz (Rhodiola)</div>
+          <div class="tl-amount">lt. Präparat</div>
+        </div>
+      </div>
+      <div class="tl-item teal">
+        <div class="icon">🍵</div>
+        <div class="body">
+          <div class="tl-time">Vormittags</div>
+          <div class="tl-name">Schilddrüsenheiltee</div>
+          <div class="tl-amount">500 ml</div>
+        </div>
+      </div>
+      <div class="tl-item teal">
+        <div class="icon">🍋</div>
+        <div class="body">
+          <div class="tl-time">Vormittags / Mittags</div>
+          <div class="tl-name">Zitronen-/Limettenwasser (im Wechsel) mit Ingwer</div>
+          <div class="tl-amount">1000 ml</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🍽️</div>
+        <div class="body">
+          <div class="tl-time">Mittagessen</div>
+          <div class="tl-name">D3/K2-Tropfen, Astaxanthin, Omega&nbsp;3, B-Komplex, Vitamin&nbsp;C, Katzenkralle, Chaga-Pilz, Maca</div>
+          <div class="tl-amount">lt. Präparat</div>
+        </div>
+      </div>
+      <div class="tl-item teal">
+        <div class="icon">🥒</div>
+        <div class="body">
+          <div class="tl-time">Nachmittags</div>
+          <div class="tl-name">Gurkensaft</div>
+          <div class="tl-amount">500 ml</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🥤</div>
+        <div class="body">
+          <div class="tl-time">Abendessen</div>
+          <div class="tl-name">Schwermetall-Ausleitungs-Smoothie</div>
+          <div class="tl-amount">1 Portion</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🌙</div>
+        <div class="body">
+          <div class="tl-time">Abends</div>
+          <div class="tl-name">Magnesium, Ashwagandha, Hyaluron</div>
+          <div class="tl-amount">lt. Präparat</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><span class="dot"></span>Timing-Logik der Ergänzungsmittel</h2>
+    <div class="timing-grid">
+
+      <div class="timing-card purple-tag">
+        <div class="row1"><span class="supp">Jod</span><span class="when">Morgens, nach Selleriesaft</span></div>
+        <div class="why">Direkt nach der morgendlichen Saftroutine, auf nüchternen Magen gut aufnehmbar.</div>
+      </div>
+
+      <div class="timing-card purple-tag">
+        <div class="row1"><span class="supp">Rosenwurz (Rhodiola)</span><span class="when">Morgens, vor/mit Frühstück</span></div>
+        <div class="why">Adaptogen mit anregender Wirkung – wird meist morgens eingenommen, um den Schlaf nicht zu stören.</div>
+      </div>
+
+      <div class="timing-card">
+        <div class="row1"><span class="supp">Vitamin C</span><span class="when">Mittags, mit Mahlzeit</span></div>
+        <div class="why">Wasserlöslich, mit Essen gut verträglich; passt organisatorisch zu den anderen Mittags-Kapseln.</div>
+      </div>
+
+      <div class="timing-card">
+        <div class="row1"><span class="supp">Katzenkralle</span><span class="when">Mittags, mit Mahlzeit</span></div>
+        <div class="why">Wird üblicherweise zu einer Mahlzeit eingenommen, um den Magen zu schonen.</div>
+      </div>
+
+      <div class="timing-card">
+        <div class="row1"><span class="supp">D3/K2, Astaxanthin, Omega 3</span><span class="when">Mittags, mit Mahlzeit</span></div>
+        <div class="why">Fettlöslich – Aufnahme ist mit einer fetthaltigen Mahlzeit deutlich besser.</div>
+      </div>
+
+      <div class="timing-card">
+        <div class="row1"><span class="supp">B-Komplex</span><span class="when">Mittags, mit Mahlzeit</span></div>
+        <div class="why">Mit Nahrung meist besser verträglich; am Vormittag/Mittag üblich, da leicht anregend.</div>
+      </div>
+
+      <div class="timing-card">
+        <div class="row1"><span class="supp">Chaga-Pilz</span><span class="when">Mittags, mit Mahlzeit</span></div>
+        <div class="why">Mit Nahrung meist besser verträglich, keine bekannten Timing-Einschränkungen.</div>
+      </div>
+
+      <div class="timing-card">
+        <div class="row1"><span class="supp">Maca</span><span class="when">Mittags, mit Mahlzeit</span></div>
+        <div class="why">Kann leicht anregend wirken – Einnahme am Vormittag/Mittag statt abends verbreitet.</div>
+      </div>
+
+      <div class="timing-card teal-tag" style="border-left:none">
+        <div class="row1"><span class="supp">Ashwagandha</span><span class="when" style="background:var(--purple-dark)">Abends, mit/nach Abendessen</span></div>
+        <div class="why">Adaptogen mit beruhigender Wirkung – abends verbreitet, u.&nbsp;a. wegen möglicher Wirkung auf Cortisol und Schlaf.</div>
+      </div>
+
+      <div class="timing-card" style="border-left:none">
+        <div class="row1"><span class="supp">Hyaluron</span><span class="when" style="background:var(--purple-dark)">Abends, mit Abendessen</span></div>
+        <div class="why">Kein spezielles Timing erforderlich, mit Mahlzeit organisatorisch einfach.</div>
+      </div>
+
+      <div class="timing-card" style="border-left:none">
+        <div class="row1"><span class="supp">Magnesium</span><span class="when" style="background:var(--purple-dark)">Abends</span></div>
+        <div class="why">Wirkt entspannend, wird häufig vor dem Schlafengehen eingenommen.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="notice">
+      <div class="ic">⚠️</div>
+      <p>
+        <strong>Hinweis:</strong> Dies sind allgemeine, gängige Timing-Empfehlungen, keine individuelle medizinische Beratung.
+        Insbesondere die Kombination aus Jod und Ashwagandha ist bei Schilddrüsenthemen relevant, da beide die
+        Schilddrüsenfunktion beeinflussen können. Bitte die gesamte Supplement-Kombination (inkl. möglicher
+        Wechselwirkungen mit Medikamenten) mit einem Arzt oder einer Ärztin bzw. Apotheke abstimmen.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><span class="dot"></span>Rezepte im Detail</h2>
+    <div class="recipe-grid">
+
+      <div class="recipe-card">
+        <h3>🍵 Schilddrüsenheiltee</h3>
+        <ul>
+          <li>Wasser – 500 ml</li>
+          <li>Thymianpulver – 1 TL</li>
+          <li>Fenchelsamen – 1 TL</li>
+          <li>Zitronenmelissenpulver – 1 TL</li>
+          <li>Naturreiner Honig – 2 TL</li>
+        </ul>
+      </div>
+
+      <div class="recipe-card">
+        <h3>🍋 Zitronen-/Limettenwasser mit Ingwer</h3>
+        <ul>
+          <li>Zitrone oder Limette (im Wechsel) – 1 Stück</li>
+          <li>Wasser – 1000 ml</li>
+          <li>Frischer Ingwer, in dünnen Scheiben – 4 cm</li>
+          <li>Rohhonig (optional) – 2 TL</li>
+        </ul>
+      </div>
+
+      <div class="recipe-card">
+        <h3>🥒 Gurkensaft</h3>
+        <ul>
+          <li>Gurken – 1–2 Stück</li>
+        </ul>
+        <div class="yield">Ergibt ca. 500 ml Saft</div>
+      </div>
+
+      <div class="recipe-card">
+        <h3>🥤 Schwermetall-Ausleitungs-Smoothie</h3>
+        <ul>
+          <li>Bananen – 2 Stück</li>
+          <li>Blaubeeren – 300 g</li>
+          <li>Koriander – 50 g</li>
+          <li>Gerstengrassaftpulver – 1 TL</li>
+          <li>Spirulina – 1 TL</li>
+          <li>Atlantischer Dulse (Lappentang) – 1 EL</li>
+          <li>Orange – 1 Stück</li>
+          <li>Wasser – 200 ml</li>
+          <li>Optional: Ahornsirup, Apfel, Datteln, Feigen, Koriander (zusätzlich)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>🦋 Butterfly · privater Tagesplan, keine medizinische Beratung</footer>
+</div>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>
