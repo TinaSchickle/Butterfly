@@ -102,6 +102,22 @@
   }
   .timing-card.purple-tag .when{background:var(--purple)}
   .timing-card .why{font-size:.85rem; color:var(--ink-soft); margin-top:6px; line-height:1.45}
+  details.timing-card{padding:0}
+  details.timing-card summary{padding:13px 16px; cursor:pointer; list-style:none}
+  details.timing-card summary::-webkit-details-marker{display:none}
+  .uses-hint{
+    margin-top:9px; font-size:.72rem; font-weight:700; color:var(--teal-dark);
+    display:flex; align-items:center; gap:4px;
+  }
+  .timing-card.purple-tag .uses-hint{color:var(--purple-dark)}
+  .uses-hint .chevron{transition:transform .2s ease; font-size:.9rem}
+  details.timing-card[open] .uses-hint .chevron{transform:rotate(90deg)}
+  .uses-body{
+    padding:0 16px 14px; font-size:.83rem; border-top:1px solid var(--line);
+    margin-top:2px; padding-top:10px;
+  }
+  .uses-body ul{margin:0; padding-left:18px; line-height:1.6; color:var(--ink)}
+  .uses-source{margin-top:8px; font-size:.72rem; color:var(--ink-soft); font-style:italic}
 
   /* Hinweis */
   .notice{
@@ -112,16 +128,25 @@
   .notice p{margin:0; font-size:.88rem; line-height:1.55; color:#6b4f1e}
   .notice strong{color:#5a3f10}
 
-  /* Recipes */
-  .recipe-grid{display:grid; grid-template-columns:1fr; gap:14px}
-  @media(min-width:600px){.recipe-grid{grid-template-columns:1fr 1fr}}
-  .recipe-card{
-    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:16px 18px;
+  /* Timeline items with an expandable recipe */
+  details.tl-item{padding:0; display:block}
+  details.tl-item summary{
+    display:flex; gap:14px; align-items:flex-start; padding:14px 16px;
+    cursor:pointer; list-style:none;
   }
-  .recipe-card h3{margin:0 0 10px; font-size:1rem; color:var(--purple-dark); display:flex; align-items:center; gap:8px}
-  .recipe-card ul{margin:0; padding-left:18px; font-size:.88rem; color:var(--ink); line-height:1.7}
-  .recipe-card .yield{font-size:.85rem; color:var(--ink-soft)}
+  details.tl-item summary::-webkit-details-marker{display:none}
+  details.tl-item summary::marker{content:""}
+  details.tl-item .chevron{
+    margin-left:auto; align-self:center; font-size:1rem; color:var(--ink-soft);
+    transition:transform .2s ease; flex:none;
+  }
+  details.tl-item[open] .chevron{transform:rotate(90deg)}
+  .recipe-body{
+    padding:0 16px 16px 50px; font-size:.85rem; color:var(--ink);
+    border-top:1px solid var(--line); margin-top:2px; padding-top:12px;
+  }
+  .recipe-body ul{margin:0; padding-left:18px; line-height:1.7}
+  .recipe-body .yield{margin-top:6px; color:var(--ink-soft)}
 
   footer{
     text-align:center; margin-top:40px; padding:18px; font-size:.75rem; color:var(--ink-soft);
@@ -182,22 +207,45 @@
           <div class="tl-amount">lt. Präparat</div>
         </div>
       </div>
-      <div class="tl-item teal">
-        <div class="icon">🍵</div>
-        <div class="body">
-          <div class="tl-time">Vormittags</div>
-          <div class="tl-name">Schilddrüsenheiltee</div>
-          <div class="tl-amount">500 ml</div>
+      <details class="tl-item teal">
+        <summary>
+          <div class="icon">🍵</div>
+          <div class="body">
+            <div class="tl-time">Vormittags</div>
+            <div class="tl-name">Schilddrüsenheiltee</div>
+            <div class="tl-amount">500 ml</div>
+          </div>
+          <div class="chevron">›</div>
+        </summary>
+        <div class="recipe-body">
+          <ul>
+            <li>Wasser – 500 ml</li>
+            <li>Thymianpulver – 1 TL</li>
+            <li>Fenchelsamen – 1 TL</li>
+            <li>Zitronenmelissenpulver – 1 TL</li>
+            <li>Naturreiner Honig – 2 TL</li>
+          </ul>
         </div>
-      </div>
-      <div class="tl-item teal">
-        <div class="icon">🍋</div>
-        <div class="body">
-          <div class="tl-time">Vormittags / Mittags</div>
-          <div class="tl-name">Zitronen-/Limettenwasser (im Wechsel) mit Ingwer</div>
-          <div class="tl-amount">1000 ml</div>
+      </details>
+      <details class="tl-item teal">
+        <summary>
+          <div class="icon">🍋</div>
+          <div class="body">
+            <div class="tl-time">Vormittags / Mittags</div>
+            <div class="tl-name">Zitronen-/Limettenwasser (im Wechsel) mit Ingwer</div>
+            <div class="tl-amount">1000 ml</div>
+          </div>
+          <div class="chevron">›</div>
+        </summary>
+        <div class="recipe-body">
+          <ul>
+            <li>Zitrone oder Limette (im Wechsel) – 1 Stück</li>
+            <li>Wasser – 1000 ml</li>
+            <li>Frischer Ingwer, in dünnen Scheiben – 4 cm</li>
+            <li>Rohhonig (optional) – 2 TL</li>
+          </ul>
         </div>
-      </div>
+      </details>
       <div class="tl-item">
         <div class="icon">🍽️</div>
         <div class="body">
@@ -206,22 +254,47 @@
           <div class="tl-amount">lt. Präparat</div>
         </div>
       </div>
-      <div class="tl-item teal">
-        <div class="icon">🥒</div>
-        <div class="body">
-          <div class="tl-time">Nachmittags</div>
-          <div class="tl-name">Gurkensaft</div>
-          <div class="tl-amount">500 ml</div>
+      <details class="tl-item teal">
+        <summary>
+          <div class="icon">🥒</div>
+          <div class="body">
+            <div class="tl-time">Nachmittags</div>
+            <div class="tl-name">Gurkensaft</div>
+            <div class="tl-amount">500 ml</div>
+          </div>
+          <div class="chevron">›</div>
+        </summary>
+        <div class="recipe-body">
+          <ul>
+            <li>Gurken – 1–2 Stück</li>
+          </ul>
+          <div class="yield">Ergibt ca. 500 ml Saft</div>
         </div>
-      </div>
-      <div class="tl-item">
-        <div class="icon">🥤</div>
-        <div class="body">
-          <div class="tl-time">Abendessen</div>
-          <div class="tl-name">Schwermetall-Ausleitungs-Smoothie</div>
-          <div class="tl-amount">1 Portion</div>
+      </details>
+      <details class="tl-item">
+        <summary>
+          <div class="icon">🥤</div>
+          <div class="body">
+            <div class="tl-time">Abendessen</div>
+            <div class="tl-name">Schwermetall-Ausleitungs-Smoothie</div>
+            <div class="tl-amount">1 Portion</div>
+          </div>
+          <div class="chevron">›</div>
+        </summary>
+        <div class="recipe-body">
+          <ul>
+            <li>Bananen – 2 Stück</li>
+            <li>Blaubeeren – 300 g</li>
+            <li>Koriander – 50 g</li>
+            <li>Gerstengrassaftpulver – 1 TL</li>
+            <li>Spirulina – 1 TL</li>
+            <li>Atlantischer Dulse (Lappentang) – 1 EL</li>
+            <li>Orange – 1 Stück</li>
+            <li>Wasser – 200 ml</li>
+            <li>Optional: Ahornsirup, Apfel, Datteln, Feigen, Koriander (zusätzlich)</li>
+          </ul>
         </div>
-      </div>
+      </details>
       <div class="tl-item">
         <div class="icon">🌙</div>
         <div class="body">
@@ -237,60 +310,182 @@
     <h2 class="section-title"><span class="dot"></span>Timing-Logik der Ergänzungsmittel</h2>
     <div class="timing-grid">
 
-      <div class="timing-card purple-tag">
-        <div class="row1"><span class="supp">Jod</span><span class="when">Morgens, nach Selleriesaft</span></div>
-        <div class="why">Direkt nach der morgendlichen Saftroutine, auf nüchternen Magen gut aufnehmbar.</div>
-      </div>
+      <details class="timing-card purple-tag">
+        <summary>
+          <div class="row1"><span class="supp">Jod</span><span class="when">Morgens, nach Selleriesaft</span></div>
+          <div class="why">Direkt nach der morgendlichen Saftroutine, auf nüchternen Magen gut aufnehmbar.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Grundbaustein der Schilddrüsenhormone T3/T4</li>
+            <li>Traditionell bei ernährungsbedingtem Jodmangel/Struma</li>
+            <li>Laut WHO häufigste vermeidbare Ursache von Schilddrüsenstörungen weltweit</li>
+          </ul>
+          <div class="uses-source">Quelle: NIH Office of Dietary Supplements, WHO</div>
+        </div>
+      </details>
 
-      <div class="timing-card purple-tag">
-        <div class="row1"><span class="supp">Rosenwurz (Rhodiola)</span><span class="when">Morgens, vor/mit Frühstück</span></div>
-        <div class="why">Adaptogen mit anregender Wirkung – wird meist morgens eingenommen, um den Schlaf nicht zu stören.</div>
-      </div>
+      <details class="timing-card purple-tag">
+        <summary>
+          <div class="row1"><span class="supp">Rosenwurz (Rhodiola)</span><span class="when">Morgens, vor/mit Frühstück</span></div>
+          <div class="why">Adaptogen mit anregender Wirkung – wird meist morgens eingenommen, um den Schlaf nicht zu stören.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Traditionell bei Stress, Erschöpfung und Konzentrationsschwäche</li>
+            <li>Adaptogen – soll Stressresistenz des Körpers unterstützen</li>
+            <li>Einzelne Studien zu mentaler Leistungsfähigkeit, Evidenz noch begrenzt</li>
+          </ul>
+          <div class="uses-source">Quelle: EMA/HMPC-Monographie (traditionelle pflanzliche Anwendung)</div>
+        </div>
+      </details>
 
-      <div class="timing-card">
-        <div class="row1"><span class="supp">Vitamin C</span><span class="when">Mittags, mit Mahlzeit</span></div>
-        <div class="why">Wasserlöslich, mit Essen gut verträglich; passt organisatorisch zu den anderen Mittags-Kapseln.</div>
-      </div>
+      <details class="timing-card">
+        <summary>
+          <div class="row1"><span class="supp">Vitamin C</span><span class="when">Mittags, mit Mahlzeit</span></div>
+          <div class="why">Wasserlöslich, mit Essen gut verträglich; passt organisatorisch zu den anderen Mittags-Kapseln.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Trägt zur normalen Funktion des Immunsystems bei</li>
+            <li>Unterstützt normale Kollagenbildung (Haut, Blutgefäße, Knochen)</li>
+            <li>Verbessert Eisenaufnahme aus pflanzlicher Nahrung</li>
+          </ul>
+          <div class="uses-source">Quelle: EFSA-Health-Claims, NIH ODS</div>
+        </div>
+      </details>
 
-      <div class="timing-card">
-        <div class="row1"><span class="supp">Katzenkralle</span><span class="when">Mittags, mit Mahlzeit</span></div>
-        <div class="why">Wird üblicherweise zu einer Mahlzeit eingenommen, um den Magen zu schonen.</div>
-      </div>
+      <details class="timing-card">
+        <summary>
+          <div class="row1"><span class="supp">Katzenkralle</span><span class="when">Mittags, mit Mahlzeit</span></div>
+          <div class="why">Wird üblicherweise zu einer Mahlzeit eingenommen, um den Magen zu schonen.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Traditionell in südamerikanischer Volksmedizin bei Gelenkbeschwerden</li>
+            <li>Wird im Zusammenhang mit Entzündungsprozessen diskutiert</li>
+            <li>Wissenschaftliche Evidenz begrenzt, v.&nbsp;a. traditionelle Anwendung</li>
+          </ul>
+          <div class="uses-source">Quelle: traditionelle Phytotherapie, begrenzte Studienlage</div>
+        </div>
+      </details>
 
-      <div class="timing-card">
-        <div class="row1"><span class="supp">D3/K2, Astaxanthin, Omega 3</span><span class="when">Mittags, mit Mahlzeit</span></div>
-        <div class="why">Fettlöslich – Aufnahme ist mit einer fetthaltigen Mahlzeit deutlich besser.</div>
-      </div>
+      <details class="timing-card">
+        <summary>
+          <div class="row1"><span class="supp">D3/K2, Astaxanthin, Omega 3</span><span class="when">Mittags, mit Mahlzeit</span></div>
+          <div class="why">Fettlöslich – Aufnahme ist mit einer fetthaltigen Mahlzeit deutlich besser.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Vitamin D3: Calcium-/Phosphathaushalt, Knochen- und Muskelfunktion</li>
+            <li>Vitamin K2: unterstützt Vitamin-D-abhängige Proteine im Knochenstoffwechsel</li>
+            <li>Astaxanthin: Carotinoid-Antioxidans, diskutiert bei oxidativem Stress</li>
+            <li>Omega 3: trägt laut EFSA zu normaler Herzfunktion bei</li>
+          </ul>
+          <div class="uses-source">Quelle: EFSA-Health-Claims (D3, K2, Omega 3); Astaxanthin-Studienlage vielversprechend, nicht abschließend</div>
+        </div>
+      </details>
 
-      <div class="timing-card">
-        <div class="row1"><span class="supp">B-Komplex</span><span class="when">Mittags, mit Mahlzeit</span></div>
-        <div class="why">Mit Nahrung meist besser verträglich; am Vormittag/Mittag üblich, da leicht anregend.</div>
-      </div>
+      <details class="timing-card">
+        <summary>
+          <div class="row1"><span class="supp">B-Komplex</span><span class="when">Mittags, mit Mahlzeit</span></div>
+          <div class="why">Mit Nahrung meist besser verträglich; am Vormittag/Mittag üblich, da leicht anregend.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>B-Vitamine tragen zu normalem Energiestoffwechsel bei</li>
+            <li>Unterstützen normale Funktion von Nervensystem und Psyche</li>
+            <li>B12/B6/Folsäure: normale Blutbildung und Homocystein-Stoffwechsel</li>
+          </ul>
+          <div class="uses-source">Quelle: EFSA-Health-Claims</div>
+        </div>
+      </details>
 
-      <div class="timing-card">
-        <div class="row1"><span class="supp">Chaga-Pilz</span><span class="when">Mittags, mit Mahlzeit</span></div>
-        <div class="why">Mit Nahrung meist besser verträglich, keine bekannten Timing-Einschränkungen.</div>
-      </div>
+      <details class="timing-card">
+        <summary>
+          <div class="row1"><span class="supp">Chaga-Pilz</span><span class="when">Mittags, mit Mahlzeit</span></div>
+          <div class="why">Mit Nahrung meist besser verträglich, keine bekannten Timing-Einschränkungen.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>In traditioneller sibirischer/asiatischer Medizin als Stärkungsmittel genutzt</li>
+            <li>Reich an Antioxidantien, oft im Kontext Immununterstützung genannt</li>
+            <li>Klinische Studienlage beim Menschen bisher gering</li>
+          </ul>
+          <div class="uses-source">Quelle: traditionelle Anwendung, überwiegend präklinische Studien</div>
+        </div>
+      </details>
 
-      <div class="timing-card">
-        <div class="row1"><span class="supp">Maca</span><span class="when">Mittags, mit Mahlzeit</span></div>
-        <div class="why">Kann leicht anregend wirken – Einnahme am Vormittag/Mittag statt abends verbreitet.</div>
-      </div>
+      <details class="timing-card">
+        <summary>
+          <div class="row1"><span class="supp">Maca</span><span class="when">Mittags, mit Mahlzeit</span></div>
+          <div class="why">Kann leicht anregend wirken – Einnahme am Vormittag/Mittag statt abends verbreitet.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Traditionell in der Anden-Region bei Energie und Ausdauer eingesetzt</li>
+            <li>Wird im Zusammenhang mit Libido und allgemeinem Wohlbefinden untersucht</li>
+            <li>Kein Nachweis für hormonähnliche (phytoöstrogene) Wirkung</li>
+          </ul>
+          <div class="uses-source">Quelle: einzelne klinische Studien, traditionelle Anwendung</div>
+        </div>
+      </details>
 
-      <div class="timing-card teal-tag" style="border-left:none">
-        <div class="row1"><span class="supp">Ashwagandha</span><span class="when" style="background:var(--purple-dark)">Abends, mit/nach Abendessen</span></div>
-        <div class="why">Adaptogen mit beruhigender Wirkung – abends verbreitet, u.&nbsp;a. wegen möglicher Wirkung auf Cortisol und Schlaf.</div>
-      </div>
+      <details class="timing-card teal-tag" style="border-left:none">
+        <summary>
+          <div class="row1"><span class="supp">Ashwagandha</span><span class="when" style="background:var(--purple-dark)">Abends, mit/nach Abendessen</span></div>
+          <div class="why">Adaptogen mit beruhigender Wirkung – abends verbreitet, u.&nbsp;a. wegen möglicher Wirkung auf Cortisol und Schlaf.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Ayurvedisches Adaptogen, traditionell bei Stress und Schlafproblemen</li>
+            <li>Studien zu Cortisolspiegel und subjektivem Stressempfinden</li>
+            <li>Kann laut Studienlage die Schilddrüsenfunktion beeinflussen – ärztliche Rücksprache wichtig</li>
+          </ul>
+          <div class="uses-source">Quelle: klinische Studien vorhanden, traditionelle ayurvedische Anwendung</div>
+        </div>
+      </details>
 
-      <div class="timing-card" style="border-left:none">
-        <div class="row1"><span class="supp">Hyaluron</span><span class="when" style="background:var(--purple-dark)">Abends, mit Abendessen</span></div>
-        <div class="why">Kein spezielles Timing erforderlich, mit Mahlzeit organisatorisch einfach.</div>
-      </div>
+      <details class="timing-card" style="border-left:none">
+        <summary>
+          <div class="row1"><span class="supp">Hyaluron</span><span class="when" style="background:var(--purple-dark)">Abends, mit Abendessen</span></div>
+          <div class="why">Kein spezielles Timing erforderlich, mit Mahlzeit organisatorisch einfach.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Traditionell zur Unterstützung von Hautfeuchtigkeit eingesetzt</li>
+            <li>Wird im Zusammenhang mit Gelenkschmiere/Gelenkgesundheit diskutiert</li>
+            <li>Einzelne Studien zu Hautelastizität bei oraler Einnahme</li>
+          </ul>
+          <div class="uses-source">Quelle: einzelne klinische Studien, v.&nbsp;a. kosmetischer Kontext</div>
+        </div>
+      </details>
 
-      <div class="timing-card" style="border-left:none">
-        <div class="row1"><span class="supp">Magnesium</span><span class="when" style="background:var(--purple-dark)">Abends</span></div>
-        <div class="why">Wirkt entspannend, wird häufig vor dem Schlafengehen eingenommen.</div>
-      </div>
+      <details class="timing-card" style="border-left:none">
+        <summary>
+          <div class="row1"><span class="supp">Magnesium</span><span class="when" style="background:var(--purple-dark)">Abends</span></div>
+          <div class="why">Wirkt entspannend, wird häufig vor dem Schlafengehen eingenommen.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Trägt zu normaler Muskel- und Nervenfunktion bei</li>
+            <li>Unterstützt normalen Energiestoffwechsel und Elektrolythaushalt</li>
+            <li>Volkstümlich bei Muskelkrämpfen und zur Schlafunterstützung verbreitet</li>
+          </ul>
+          <div class="uses-source">Quelle: EFSA-Health-Claims</div>
+        </div>
+      </details>
 
     </div>
   </section>
@@ -304,57 +499,6 @@
         Schilddrüsenfunktion beeinflussen können. Bitte die gesamte Supplement-Kombination (inkl. möglicher
         Wechselwirkungen mit Medikamenten) mit einem Arzt oder einer Ärztin bzw. Apotheke abstimmen.
       </p>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section-title"><span class="dot"></span>Rezepte im Detail</h2>
-    <div class="recipe-grid">
-
-      <div class="recipe-card">
-        <h3>🍵 Schilddrüsenheiltee</h3>
-        <ul>
-          <li>Wasser – 500 ml</li>
-          <li>Thymianpulver – 1 TL</li>
-          <li>Fenchelsamen – 1 TL</li>
-          <li>Zitronenmelissenpulver – 1 TL</li>
-          <li>Naturreiner Honig – 2 TL</li>
-        </ul>
-      </div>
-
-      <div class="recipe-card">
-        <h3>🍋 Zitronen-/Limettenwasser mit Ingwer</h3>
-        <ul>
-          <li>Zitrone oder Limette (im Wechsel) – 1 Stück</li>
-          <li>Wasser – 1000 ml</li>
-          <li>Frischer Ingwer, in dünnen Scheiben – 4 cm</li>
-          <li>Rohhonig (optional) – 2 TL</li>
-        </ul>
-      </div>
-
-      <div class="recipe-card">
-        <h3>🥒 Gurkensaft</h3>
-        <ul>
-          <li>Gurken – 1–2 Stück</li>
-        </ul>
-        <div class="yield">Ergibt ca. 500 ml Saft</div>
-      </div>
-
-      <div class="recipe-card">
-        <h3>🥤 Schwermetall-Ausleitungs-Smoothie</h3>
-        <ul>
-          <li>Bananen – 2 Stück</li>
-          <li>Blaubeeren – 300 g</li>
-          <li>Koriander – 50 g</li>
-          <li>Gerstengrassaftpulver – 1 TL</li>
-          <li>Spirulina – 1 TL</li>
-          <li>Atlantischer Dulse (Lappentang) – 1 EL</li>
-          <li>Orange – 1 Stück</li>
-          <li>Wasser – 200 ml</li>
-          <li>Optional: Ahornsirup, Apfel, Datteln, Feigen, Koriander (zusätzlich)</li>
-        </ul>
-      </div>
-
     </div>
   </section>
 
