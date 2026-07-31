@@ -109,6 +109,14 @@
   .uses-body ul{margin:0; padding-left:18px; line-height:1.6; color:var(--ink)}
   .uses-source{margin-top:8px; font-size:.72rem; color:var(--ink-soft); font-style:italic}
 
+  /* Archiv */
+  .timing-card.archived{opacity:.72; border:1px dashed var(--line)}
+  .timing-card.archived .supp{color:var(--ink-soft)}
+  .timing-card.archived .reason{
+    font-size:.72rem; font-weight:700; color:#fff; background:var(--ink-soft);
+    padding:3px 10px; border-radius:999px; white-space:nowrap;
+  }
+
   /* Hinweis */
   .notice{
     background:var(--amber-bg); border:1px solid #f0d9a8; border-radius:var(--radius);
@@ -187,7 +195,23 @@
         <div class="body">
           <div class="tl-time">Morgens, vor/mit Frühstück</div>
           <div class="tl-name">Rosenwurz (Rhodiola)</div>
-          <div class="tl-amount">lt. Präparat</div>
+          <div class="tl-amount">1 Kapsel</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🌊</div>
+        <div class="body">
+          <div class="tl-time">Morgens, mit Frühstück</div>
+          <div class="tl-name">Spirulina (Kapseln)</div>
+          <div class="tl-amount">4 Tabletten</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🍃</div>
+        <div class="body">
+          <div class="tl-time">Morgens, vor/mit Frühstück</div>
+          <div class="tl-name">Artischockenextrakt</div>
+          <div class="tl-amount">1 Kapsel</div>
         </div>
       </div>
       <details class="tl-item teal">
@@ -233,8 +257,24 @@
         <div class="icon">🍽️</div>
         <div class="body">
           <div class="tl-time">Mittagessen</div>
-          <div class="tl-name">D3/K2-Tropfen, Astaxanthin, Omega&nbsp;3, B-Komplex, Vitamin&nbsp;C, Katzenkralle, Chaga-Pilz, Maca</div>
+          <div class="tl-name">D3/K2-Tropfen, Omega&nbsp;3, B-Komplex, Vitamin&nbsp;C, Chaga-Pilz (2 Kapseln), Maca</div>
           <div class="tl-amount">lt. Präparat</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🌊</div>
+        <div class="body">
+          <div class="tl-time">Mittagessen</div>
+          <div class="tl-name">Spirulina (Kapseln)</div>
+          <div class="tl-amount">4 Tabletten</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🍃</div>
+        <div class="body">
+          <div class="tl-time">Mittagessen</div>
+          <div class="tl-name">Artischockenextrakt</div>
+          <div class="tl-amount">1 Kapsel</div>
         </div>
       </div>
       <details class="tl-item teal">
@@ -279,10 +319,26 @@
         </div>
       </details>
       <div class="tl-item">
+        <div class="icon">🌊</div>
+        <div class="body">
+          <div class="tl-time">Abendessen</div>
+          <div class="tl-name">Spirulina (Kapseln)</div>
+          <div class="tl-amount">4 Tabletten</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="icon">🍃</div>
+        <div class="body">
+          <div class="tl-time">Abendessen</div>
+          <div class="tl-name">Artischockenextrakt</div>
+          <div class="tl-amount">1 Kapsel</div>
+        </div>
+      </div>
+      <div class="tl-item">
         <div class="icon">🌙</div>
         <div class="body">
           <div class="tl-time">Abends</div>
-          <div class="tl-name">Magnesium, Ashwagandha, Hyaluron</div>
+          <div class="tl-name">Magnesium, Ashwagandha</div>
           <div class="tl-amount">lt. Präparat</div>
         </div>
       </div>
@@ -343,23 +399,7 @@
 
       <details class="timing-card">
         <summary>
-          <div class="row1"><span class="supp">Katzenkralle</span><span class="when">Mittags, mit Mahlzeit</span></div>
-          <div class="why">Wird üblicherweise zu einer Mahlzeit eingenommen, um den Magen zu schonen.</div>
-          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
-        </summary>
-        <div class="uses-body">
-          <ul>
-            <li>Traditionell in südamerikanischer Volksmedizin bei Gelenkbeschwerden</li>
-            <li>Wird im Zusammenhang mit Entzündungsprozessen diskutiert</li>
-            <li>Wissenschaftliche Evidenz begrenzt, v.&nbsp;a. traditionelle Anwendung</li>
-          </ul>
-          <div class="uses-source">Quelle: traditionelle Phytotherapie, begrenzte Studienlage</div>
-        </div>
-      </details>
-
-      <details class="timing-card">
-        <summary>
-          <div class="row1"><span class="supp">D3/K2, Astaxanthin, Omega 3</span><span class="when">Mittags, mit Mahlzeit</span></div>
+          <div class="row1"><span class="supp">D3/K2, Omega 3</span><span class="when">Mittags, mit Mahlzeit</span></div>
           <div class="why">Fettlöslich – Aufnahme ist mit einer fetthaltigen Mahlzeit deutlich besser.</div>
           <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
         </summary>
@@ -367,10 +407,41 @@
           <ul>
             <li>Vitamin D3: Calcium-/Phosphathaushalt, Knochen- und Muskelfunktion</li>
             <li>Vitamin K2: unterstützt Vitamin-D-abhängige Proteine im Knochenstoffwechsel</li>
-            <li>Astaxanthin: Carotinoid-Antioxidans, diskutiert bei oxidativem Stress</li>
             <li>Omega 3: trägt laut EFSA zu normaler Herzfunktion bei</li>
           </ul>
-          <div class="uses-source">Quelle: EFSA-Health-Claims (D3, K2, Omega 3); Astaxanthin-Studienlage vielversprechend, nicht abschließend</div>
+          <div class="uses-source">Quelle: EFSA-Health-Claims (D3, K2, Omega 3)</div>
+        </div>
+      </details>
+
+      <details class="timing-card teal-tag">
+        <summary>
+          <div class="row1"><span class="supp">Spirulina (Kapseln)</span><span class="when">3× täglich, je 4 Tabletten</span></div>
+          <div class="why">Auf 3 Portionen über den Tag verteilt (zu den Hauptmahlzeiten) – schont den Magen und hält die Zufuhr gleichmäßig, statt einer großen Einzeldosis auf einmal.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Nährstoffreiche Blaualge – u.&nbsp;a. Eiweiß, B-Vitamine, Eisen, Chlorophyll, Phycocyanin</li>
+            <li>Antioxidative Eigenschaften, traditionell im Kontext Immununterstützung diskutiert</li>
+            <li>Passt thematisch zum Ausleitungs-Smoothie – ergänzt die Detox-Routine über den ganzen Tag</li>
+          </ul>
+          <div class="uses-source">Quelle: NIH ODS (Nährstoffprofil), Herstellerdosierung 3×4 Tbl./Tag; Anwendung überwiegend ernährungsphysiologisch/traditionell begründet</div>
+        </div>
+      </details>
+
+      <details class="timing-card teal-tag">
+        <summary>
+          <div class="row1"><span class="supp">Artischockenextrakt</span><span class="when">3× täglich, je 1 Kapsel</span></div>
+          <div class="why">Am besten zu bzw. kurz vor den drei Hauptmahlzeiten – unterstützt Gallenfluss und Fettverdauung genau dann, wenn sie gebraucht werden.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Traditionell bei Verdauungsbeschwerden wie Völlegefühl und Blähungen nach fettem Essen</li>
+            <li>Choleretisch – regt den Gallenfluss an, unterstützt die Leberfunktion</li>
+            <li>Passt zum Entgiftungs-/Leber-Fokus dieses Tagesplans</li>
+          </ul>
+          <div class="uses-source">Quelle: EMA/HMPC-Monographie Cynarae folium (traditionelle pflanzliche Anwendung)</div>
         </div>
       </details>
 
@@ -440,22 +511,6 @@
 
       <details class="timing-card" style="border-left:none">
         <summary>
-          <div class="row1"><span class="supp">Hyaluron</span><span class="when" style="background:var(--purple-dark)">Abends, mit Abendessen</span></div>
-          <div class="why">Kein spezielles Timing erforderlich, mit Mahlzeit organisatorisch einfach.</div>
-          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
-        </summary>
-        <div class="uses-body">
-          <ul>
-            <li>Traditionell zur Unterstützung von Hautfeuchtigkeit eingesetzt</li>
-            <li>Wird im Zusammenhang mit Gelenkschmiere/Gelenkgesundheit diskutiert</li>
-            <li>Einzelne Studien zu Hautelastizität bei oraler Einnahme</li>
-          </ul>
-          <div class="uses-source">Quelle: einzelne klinische Studien, v.&nbsp;a. kosmetischer Kontext</div>
-        </div>
-      </details>
-
-      <details class="timing-card" style="border-left:none">
-        <summary>
           <div class="row1"><span class="supp">Magnesium</span><span class="when" style="background:var(--purple-dark)">Abends</span></div>
           <div class="why">Wirkt entspannend, wird häufig vor dem Schlafengehen eingenommen.</div>
           <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
@@ -482,6 +537,45 @@
         Schilddrüsenfunktion beeinflussen können. Bitte die gesamte Supplement-Kombination (inkl. möglicher
         Wechselwirkungen mit Medikamenten) mit einem Arzt oder einer Ärztin bzw. Apotheke abstimmen.
       </p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><span class="dot"></span>Archiv</h2>
+    <div class="timing-grid">
+
+      <details class="timing-card archived">
+        <summary>
+          <div class="row1"><span class="supp">Astaxanthin <em>(nachbestellen!)</em></span><span class="reason">Nachbestellen</span></div>
+          <div class="why">Ursprünglich mittags mit fetthaltiger Mahlzeit (fettlöslich, gemeinsam mit D3/K2 und Omega 3).</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Carotinoid-Antioxidans, traditionell zum Zellschutz eingesetzt</li>
+            <li>Bei oxidativem Stress und Hautgesundheit diskutiert</li>
+            <li>Studienlage vielversprechend, aber noch nicht abschließend</li>
+          </ul>
+          <div class="uses-source">Quelle: vorläufige Studienlage, bislang keine zugelassenen EFSA-Health-Claims</div>
+        </div>
+      </details>
+
+      <details class="timing-card archived">
+        <summary>
+          <div class="row1"><span class="supp">Hyaluron</span><span class="reason">Pausiert</span></div>
+          <div class="why">Ursprünglich abends mit dem Abendessen. Grund fürs Pausieren: einfach so, kein bestimmter Anlass.</div>
+          <div class="uses-hint">Anwendungsgebiete <span class="chevron">›</span></div>
+        </summary>
+        <div class="uses-body">
+          <ul>
+            <li>Traditionell zur Unterstützung von Hautfeuchtigkeit eingesetzt</li>
+            <li>Wird im Zusammenhang mit Gelenkschmiere/Gelenkgesundheit diskutiert</li>
+            <li>Einzelne Studien zu Hautelastizität bei oraler Einnahme</li>
+          </ul>
+          <div class="uses-source">Quelle: einzelne klinische Studien, v.&nbsp;a. kosmetischer Kontext</div>
+        </div>
+      </details>
+
     </div>
   </section>
 
