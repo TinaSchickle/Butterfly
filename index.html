@@ -46,7 +46,7 @@
   }
   .page-header-inner{max-width:720px; margin:0 auto}
   .brand{display:flex; align-items:center; gap:9px; margin-bottom:16px}
-  .brand-mark{width:32px; height:32px; flex:none}
+  .brand-mark{width:32px; height:32px; flex:none; border-radius:7px; box-shadow:var(--shadow)}
   .eyebrow{font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent)}
   .page-header h1{margin:0 0 6px; font-size:1.8rem; font-weight:800; letter-spacing:-.01em; color:var(--ink)}
   .page-header .sub{margin:0; font-size:.95rem; color:var(--ink-soft)}
@@ -153,13 +153,7 @@
 <header class="page-header">
   <div class="page-header-inner">
     <div class="brand">
-      <svg class="brand-mark" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 10 C18 2 6 4 5 14 C4 22 12 26 20 22 C22 21 23.5 19 24 17 Z" fill="var(--accent)"/>
-        <path d="M24 10 C30 2 42 4 43 14 C44 22 36 26 28 22 C26 21 24.5 19 24 17 Z" fill="var(--accent)"/>
-        <path d="M24 17 C18 24 10 27 9 34 C8 40 16 43 22 38 C23.5 37 24 33 24 29 Z" fill="var(--accent2)"/>
-        <path d="M24 17 C30 24 38 27 39 34 C40 40 32 43 26 38 C24.5 37 24 33 24 29 Z" fill="var(--accent2)"/>
-        <rect x="22.5" y="8" width="3" height="32" rx="1.5" fill="var(--ink)"/>
-      </svg>
+      <img class="brand-mark" src="icon.svg" alt="" width="32" height="32">
       <span class="eyebrow">Butterfly · Schilddrüse</span>
     </div>
     <h1>Tagesplan</h1>
