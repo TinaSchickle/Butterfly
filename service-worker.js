@@ -1,4 +1,4 @@
-const CACHE_NAME = 'butterfly-v1';
+const CACHE_NAME = 'butterfly-v2';
 const SHELL_ASSETS = ['./', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', (event) => {
@@ -17,19 +17,18 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Network-first: immer die aktuelle Version laden und im Cache aktualisieren;
+// nur ohne Verbindung auf die zuletzt gecachte Version zurückfallen. So zeigt
+// die installierte App nach einem Deploy nicht dauerhaft eine alte Version.
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   event.respondWith(
-    caches.match(event.request).then(
-      (cached) =>
-        cached ||
-        fetch(event.request)
-          .then((response) => {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-            return response;
-          })
-          .catch(() => cached)
-    )
+    fetch(event.request)
+      .then((response) => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
