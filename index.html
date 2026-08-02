@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Butterfly – Tagesplan Schilddrüse</title>
 <meta name="description" content="Tagesplan für Säfte, Tees, Nahrungsergänzung und Rezepte bei Schilddrüsenthemen">
-<meta name="theme-color" content="#3f6f63">
+<meta name="theme-color" content="#4f8a76">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -14,18 +14,20 @@
 <meta name="apple-mobile-web-app-title" content="Butterfly">
 <style>
   :root{
-    --bg:#f6f5f2;
+    --bg:#faf6f0;
     --card:#ffffff;
-    --ink:#1e1c1a;
-    --ink-soft:#6f6b63;
-    --line:#e6e3db;
-    --accent:#3f6f63;
-    --accent-soft:#e8efec;
-    --warn-bg:#faf3e6;
-    --warn-border:#e6d7b8;
-    --warn-ink:#6b5730;
-    --radius:12px;
-    --shadow:0 1px 2px rgba(20,18,15,.05);
+    --ink:#2b2521;
+    --ink-soft:#7d7266;
+    --line:#ece2d4;
+    --accent:#4f8a76;
+    --accent-soft:#e0efe8;
+    --accent2:#dd8f5f;
+    --accent2-soft:#fbe9dc;
+    --warn-bg:#fdf1e0;
+    --warn-border:#f1d9ab;
+    --warn-ink:#7a5a26;
+    --radius:16px;
+    --shadow:0 3px 12px rgba(70,50,25,.06), 0 1px 2px rgba(70,50,25,.05);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
@@ -38,17 +40,25 @@
   }
   .wrap{max-width:720px; margin:0 auto; padding:0 20px}
 
-  .page-header{max-width:720px; margin:0 auto; padding:44px 20px 22px; border-bottom:1px solid var(--line)}
-  .brand{display:flex; align-items:center; gap:8px; margin-bottom:14px}
-  .brand-mark{width:22px; height:22px; color:var(--accent); flex:none}
-  .eyebrow{font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent)}
-  .page-header h1{margin:0 0 6px; font-size:1.65rem; font-weight:700; letter-spacing:-.01em}
-  .page-header .sub{margin:0; font-size:.9rem; color:var(--ink-soft)}
+  .page-header{
+    background:linear-gradient(160deg, var(--accent-soft) 0%, var(--bg) 65%);
+    padding:40px 20px 26px; border-radius:0 0 28px 28px;
+  }
+  .page-header-inner{max-width:720px; margin:0 auto}
+  .brand{display:flex; align-items:center; gap:9px; margin-bottom:16px}
+  .brand-mark{width:32px; height:32px; flex:none}
+  .eyebrow{font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent)}
+  .page-header h1{margin:0 0 6px; font-size:1.8rem; font-weight:800; letter-spacing:-.01em; color:var(--ink)}
+  .page-header .sub{margin:0; font-size:.95rem; color:var(--ink-soft)}
 
   section{margin-top:32px}
   h2.section-title{
-    font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.09em;
-    color:var(--ink-soft); margin:0 0 14px;
+    display:flex; align-items:center; gap:8px;
+    font-size:1rem; font-weight:700; letter-spacing:-.005em;
+    color:var(--ink); margin:0 0 14px;
+  }
+  h2.section-title .dot{
+    width:9px; height:9px; border-radius:50%; background:var(--accent); flex:none;
   }
 
   /* Timeline */
@@ -86,11 +96,11 @@
     padding:13px 16px; box-shadow:var(--shadow);
   }
   .timing-card .row1{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap}
-  .timing-card .supp{font-weight:600; color:var(--ink); font-size:.95rem}
+  .timing-card .supp{font-weight:700; color:var(--ink); font-size:.96rem}
   .chip{
-    font-size:.66rem; font-weight:700; letter-spacing:.02em; text-transform:uppercase;
+    font-size:.68rem; font-weight:700; letter-spacing:.02em;
     color:var(--accent); background:var(--accent-soft);
-    padding:3px 9px; border-radius:6px; white-space:nowrap;
+    padding:4px 11px; border-radius:999px; white-space:nowrap;
   }
   .chip.muted{color:var(--ink-soft); background:var(--line)}
   .timing-card .why{font-size:.84rem; color:var(--ink-soft); margin-top:6px; line-height:1.5}
@@ -129,10 +139,11 @@
 
   @media(prefers-color-scheme:dark){
     :root{
-      --bg:#171513; --card:#211f1c; --ink:#f1efe9; --ink-soft:#a9a49b;
-      --line:#332f2a; --accent:#7fb3a4; --accent-soft:#22322c;
+      --bg:#18211d; --card:#24211d; --ink:#f2ede4; --ink-soft:#b0a89b;
+      --line:#3a352d; --accent:#8fc4ae; --accent-soft:#2a3a32;
+      --accent2:#e8a675; --accent2-soft:#3a2e21;
       --warn-bg:#332a18; --warn-border:#54432b; --warn-ink:#e3c98a;
-      --shadow:0 1px 2px rgba(0,0,0,.3);
+      --shadow:0 3px 12px rgba(0,0,0,.3);
     }
   }
 </style>
@@ -140,24 +151,26 @@
 <body>
 
 <header class="page-header">
-  <div class="brand">
-    <svg class="brand-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M24 10 C18 2 6 4 5 14 C4 22 12 26 20 22 C22 21 23.5 19 24 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M24 10 C30 2 42 4 43 14 C44 22 36 26 28 22 C26 21 24.5 19 24 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M24 17 C18 24 10 27 9 34 C8 40 16 43 22 38 C23.5 37 24 33 24 29" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M24 17 C30 24 38 27 39 34 C40 40 32 43 26 38 C24.5 37 24 33 24 29" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      <line x1="24" y1="8" x2="24" y2="40" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-    </svg>
-    <span class="eyebrow">Butterfly · Schilddrüse</span>
+  <div class="page-header-inner">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 10 C18 2 6 4 5 14 C4 22 12 26 20 22 C22 21 23.5 19 24 17 Z" fill="var(--accent)"/>
+        <path d="M24 10 C30 2 42 4 43 14 C44 22 36 26 28 22 C26 21 24.5 19 24 17 Z" fill="var(--accent)"/>
+        <path d="M24 17 C18 24 10 27 9 34 C8 40 16 43 22 38 C23.5 37 24 33 24 29 Z" fill="var(--accent2)"/>
+        <path d="M24 17 C30 24 38 27 39 34 C40 40 32 43 26 38 C24.5 37 24 33 24 29 Z" fill="var(--accent2)"/>
+        <rect x="22.5" y="8" width="3" height="32" rx="1.5" fill="var(--ink)"/>
+      </svg>
+      <span class="eyebrow">Butterfly · Schilddrüse</span>
+    </div>
+    <h1>Tagesplan</h1>
+    <p class="sub">Säfte, Tees, Ergänzungen &amp; Rezepte im Tagesverlauf</p>
   </div>
-  <h1>Tagesplan</h1>
-  <p class="sub">Säfte, Tees, Ergänzungen &amp; Rezepte im Tagesverlauf</p>
 </header>
 
 <div class="wrap">
 
   <section>
-    <h2 class="section-title">Tagesverlauf</h2>
+    <h2 class="section-title"><span class="dot"></span>Tagesverlauf</h2>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-time">Morgens, nüchtern</div>
@@ -264,7 +277,7 @@
   </section>
 
   <section>
-    <h2 class="section-title">Timing-Logik der Ergänzungsmittel</h2>
+    <h2 class="section-title"><span class="dot"></span>Timing-Logik der Ergänzungsmittel</h2>
     <div class="timing-grid">
 
       <details class="timing-card">
@@ -459,7 +472,7 @@
   </section>
 
   <section>
-    <h2 class="section-title">Archiv</h2>
+    <h2 class="section-title"><span class="dot"></span>Archiv</h2>
     <div class="timing-grid">
 
       <details class="timing-card archived">
